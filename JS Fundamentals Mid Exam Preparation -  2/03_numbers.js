@@ -33,4 +33,3 @@ function solve(string) {
         console.log(resultArr.join(" "));
     }
 }
-solve(["Diamonds|Silver|Shotgun|Gold", "Loot Silver Medals Coal", "Drop -1", "Drop 1", "Steal 6", "Yohoho!"]);
