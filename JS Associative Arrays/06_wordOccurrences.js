@@ -3,8 +3,8 @@ function wordOccurrences(arr) {
     for (let i = 0; i < arr.length; i++) {
         let count = 1;
         let word = arr[i];
-        if (wordArr.find(curObj => curObj.name === word)) {
-            let curObj = wordArr.find(curObj => curObj.name === word);
+        let curObj = wordArr.find(curObj => curObj.name === word);
+        if (curObj) {
             curObj['count'] += count;
         }
         else {
