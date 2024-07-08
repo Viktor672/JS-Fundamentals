@@ -1,15 +1,13 @@
 function wordOccurrences(arr) {
     let wordArr = [];
     for (let i = 0; i < arr.length; i++) {
-        let count = 0;
+        let count = 1;
         let word = arr[i];
         if (wordArr.find(curObj => curObj.name === word)) {
-            count++;
             let curObj = wordArr.find(curObj => curObj.name === word);
             curObj['count'] += count;
         }
         else {
-            count++;
             wordArr.push({ name: word, count: count });
         }
     }

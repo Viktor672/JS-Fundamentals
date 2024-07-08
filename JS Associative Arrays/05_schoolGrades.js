@@ -20,8 +20,8 @@ function schoolGrades(arr) {
         let sum = 0;
         let averageGrade = 0;
         let grades = tuples[i][1];
-        for (let i = 0; i < grades.length; i++) {
-            sum += grades[i];
+        for (let j = 0; j < grades.length; j++) {
+            sum += grades[j];
             count++;
         }
         averageGrade = sum / count;
@@ -31,3 +31,4 @@ function schoolGrades(arr) {
         console.log(`${curEl[0]}: ${curEl[1]}`);
     }
 }
+
