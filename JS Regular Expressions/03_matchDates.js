@@ -1,6 +1,6 @@
 function matchDates(arr) {
     let string = arr.join(", ");
-    let regex = /\b(?<day>[0-9]{2})([-.\/])(?<month>[A-Z][a-z]{2})\2(?<year>[0-9]{4})\b/gm;
+    let regex = /(?<day>[0-9]{2})([-.\/])(?<month>[A-Z][a-z]{2})\2(?<year>[0-9]{4})\b/gm;
     let matchedDates = string.matchAll(regex);
     for (const curEl of matchedDates) {
         let day = curEl.groups['day'];
