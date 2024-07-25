@@ -1,6 +1,5 @@
 function solve(matrixRows) {
-    let matrix = matrixRows.map(
-        row => row.split(' ').map(Number));
+    let matrix = matrixRows.map(row => row.split(' ').map(Number));
 
     let sumFirstDiagonal = 0;
     for (let i = 0; i < matrix.length; i++) {
