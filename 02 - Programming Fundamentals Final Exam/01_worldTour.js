@@ -15,7 +15,7 @@ function worldTour(arr) {
         else if (action == "Remove Stop") {
             let startIndex = Number(trimmedTokens.shift());
             let endIndex = Number(trimmedTokens.shift());
-            if (stopsStr[startIndex] && stopsStr[endIndex]) {
+            if (stopsStr[startIndex] && stopsStr[endIndex] && startIndex<=endIndex) {
                 stopsStr = stopsStr.substring(0, startIndex) + stopsStr.substring(endIndex + 1);
             }
         }
