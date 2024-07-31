@@ -1,61 +1,67 @@
 function bakeryShop(arr) {
     let foodObj = {};
     let soldFoodObj = {};
-    let action = arr.shift();
-    while (action != "Complete") {
-        let tokens = action.split(" ");
-        let [command, quantity, food] = tokens;
+    let command = arr.shift();
+    while (command != "Complete") {
+        let tokens = command.split(" ");
+        let [action, quantity, food] = tokens;
         quantity = Number(quantity);
-        if (quantity <= 0) {
-            action = arr.shift();
-            continue;
-        }
-        if (command == "Receive") {
+        if (action == "Receive") {
+            if (quantity < 0) {
+                command = arr.shift();
+                continue;
+            }
             if (food in foodObj) {
                 foodObj[food] += quantity;
             }
             else {
-                foodObj[food] = {};
                 foodObj[food] = quantity;
             }
         }
-        else if (command == "Sell") {
+        else if (action == "Sell") {
             if (!(food in foodObj)) {
                 console.log(`You do not have any ${food}.`);
             }
             else {
                 if (quantity > foodObj[food]) {
                     console.log(`There aren't enough ${food}. You sold the last ${foodObj[food]} of them.`);
-                    soldFoodObj[food] = {};
-                    soldFoodObj[food] = foodObj[food];
+                    if ((food in soldFoodObj)) {
+                        soldFoodObj[food] += foodObj[food]
+                    }
+                    else {
+                        soldFoodObj[food] = foodObj[food];
+                    }
                     delete foodObj[food];
                 }
                 else {
-                    foodObj[food] -= quantity;
                     console.log(`You sold ${quantity} ${food}.`);
-                    soldFoodObj[food] = {};
-                    soldFoodObj[food] = quantity;
-                    if (foodObj[food] <= 0) {
+                    foodObj[food] -= quantity;
+                    if ((food in soldFoodObj)) {
+                        soldFoodObj[food] += quantity
+                    }
+                    else {
+                        soldFoodObj[food] = quantity;
+                    }
+                    if (foodObj[food] == 0) {
                         delete foodObj[food];
                     }
                 }
             }
         }
-        action = arr.shift();
+        command = arr.shift();
     }
-    for (const key in foodObj) {
-        console.log(`${key}: ${foodObj[key]}`);
+    let soldFoodSum = 0;
+    for (const food in soldFoodObj) {
+        soldFoodSum += soldFoodObj[food]
     }
-    let sumOfSoldFood = 0;
-    for (const key in soldFoodObj) {
-        sumOfSoldFood += soldFoodObj[key];
+    for (const food in foodObj) {
+        console.log(`${food}: ${foodObj[food]}`);
     }
-    console.log(`All sold: ${sumOfSoldFood} goods`);
+    console.log(`All sold: ${soldFoodSum} goods`);
 }
 bakeryShop([
-    'Receive 10 muffins',
-    'Receive 23 bagels',
-    'Sell 5 muffins',
-    'Sell 10 bagels',
-    'Complete'
-  ]);
+    'Receive 105 cookies',
+    'Receive 10 donuts',
+    'Sell 10 donuts',
+    'Sell 1 bread',
+    'Complete']);
