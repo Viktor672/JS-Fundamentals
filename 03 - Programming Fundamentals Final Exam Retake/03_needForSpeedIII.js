@@ -73,6 +73,4 @@ needForSpeedIII([
     'Drive : Aston Martin Valkryie : 2 : 1',
     'Refuel : Lamborghini Veneno : 40',
     'Revert : Bugatti Veyron : 2000',
-    'Stop'
-]
-);
+    'Stop']);
