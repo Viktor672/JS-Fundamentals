@@ -1,16 +1,17 @@
 function cardGame(arr) {
     let cardObj = {};
     for (let i = 0; i < arr.length; i++) {
-        let [name, cards] = arr[i].split(": ");
-        let cardsArr = cards.split(", ")
-        if (!cardObj[name]) {
+        let tokens = arr[i].split(": ");
+        let name = tokens.shift();
+        let cardsArr = tokens.shift().split(", ");
+        if (!(name in cardObj)) {
             cardObj[name] = new Set();
         }
         for (const curCard of cardsArr) {
-            cardObj[name].add(curCard)
+            cardObj[name].add(curCard);
         }
     }
-    for (const key in cardObj) {
+    for (const name in cardObj) {
         let powerObj = {
             '2': 2,
             '3': 3,
@@ -26,39 +27,32 @@ function cardGame(arr) {
             'K': 13,
             'A': 14
         }
-
         let typeObj = {
-            'C': 1,
-            'D': 2,
+            'S': 4,
             'H': 3,
-            'S': 4
+            'D': 2,
+            'C': 1
         }
-        let sum = 0;
-        let values = cardObj[key];
-        for (const curEl of values) {
-            let power = curEl[0];
-            let type = curEl[1];
+        let totalValue = 0;
+        let cardsSet = cardObj[name];
+        let cardsArr = Array.from(cardsSet.keys(cardObj[name]));
+        for (const curCard of cardsArr) {
+            let power = curCard[0];
+            let type = curCard[1];
             if (power == '1') {
                 power = '10';
-                type = curEl[2];
+                type = curCard[2];
             }
-            sum += powerObj[power] * typeObj[type];
+            totalValue += powerObj[power] * typeObj[type];
         }
-        console.log(`${key}: ${sum}`);
+        console.log(`${name}: ${totalValue}`);
     }
-}
-
+}   
 cardGame([
-
     'Peter: 2C, 4H, 9H, AS, QS',
-
-    'Tomas: 3H, 10S, JC, KD, 5S, 10S',
-
+    'Thomas: 3H, 10S, JC, KD, 5S, 10S',
     'Andrea: QH, QC, QS, QD',
-
-    'Tomas: 6H, 7S, KC, KD, 5S, 10C',
-
+    'Thomas: 6H, 7S, KC, KD, 5S, 10C',
     'Andrea: QH, QC, JS, JD, JC',
     'Peter: JD, JD, JD, JD, JD, JD'
-
 ]);
