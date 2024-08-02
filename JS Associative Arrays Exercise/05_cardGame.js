@@ -54,5 +54,4 @@ cardGame([
     'Andrea: QH, QC, QS, QD',
     'Thomas: 6H, 7S, KC, KD, 5S, 10C',
     'Andrea: QH, QC, JS, JD, JC',
-    'Peter: JD, JD, JD, JD, JD, JD'
-]);
+    'Peter: JD, JD, JD, JD, JD, JD']);
