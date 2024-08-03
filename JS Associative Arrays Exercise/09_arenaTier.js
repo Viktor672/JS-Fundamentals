@@ -14,7 +14,7 @@ function arenaTier(arr) {
                 }
                 else {
                     gladiatorObj[gladiator][technique] = skill;
-                }                                                                        //possible error
+                }                                                                        
             }
             else {
                 gladiatorObj[gladiator] = {};
