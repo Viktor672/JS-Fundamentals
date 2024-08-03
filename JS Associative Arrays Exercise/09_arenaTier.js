@@ -62,7 +62,7 @@ function arenaTier(arr) {
 }
 arenaTier([
     'Pesho -> BattleCry -> 400',
-    'Gosho -> PowerPunch -> 300',
+    'Alex -> PowerPunch -> 300',
     'Stamat -> Duck -> 200',
     'Stamat -> Tiger -> 250',
     'Ave Cesar']);
