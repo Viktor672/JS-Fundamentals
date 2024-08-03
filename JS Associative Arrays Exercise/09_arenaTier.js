@@ -35,7 +35,7 @@ function arenaTier(arr) {
                         if (gladiatorObj[firstGlad][technique] > gladiatorObj[secondGlad][technique]) {
                             delete gladiatorObj[secondGlad];
                         }
-                        else if (gladiatorObj[firstGlad][technique] < gladiatorObj[secondGlad][technique]) {
+                        else {
                             delete gladiatorObj[firstGlad];
                         }
                         break;
