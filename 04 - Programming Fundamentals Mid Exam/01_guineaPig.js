@@ -1,4 +1,4 @@
-function solve(arr) {
+function guineaPig(arr) {
     let foodInGrams = Number(Number(arr[0]) * 1000);
     let hayInGrams = Number(Number(arr[1]) * 1000);
     let coverInGrams = Number(Number(arr[2]) * 1000);
